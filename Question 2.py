@@ -37,34 +37,34 @@ def convert_and_clean_tokens(unfinished_word_list): # Converts all the words int
     return finished_word_list
 
 
-def construct_bigrams(word_list): #
+def construct_bigrams(word_list): # Constructs bigrams and puts them in a list.
     bigram_list = []
     for i in range(len(word_list) - 1):
         bigram_list.append((word_list[i], word_list[i + 1]))
 
     return bigram_list
 
-def calculate_bigram_frequency(bigram_list):
-    bigram_frequencies_dictionary = {}
+def calculate_bigram_frequency(bigram_list): # Calculates the frequency of each bigram.
+    bigram_frequencies_dictionary = {} # Puts a bigram as a key, and its frequency as their value.
     for bigram in bigram_list:
-        bigram_count = 0
+        bigram_count = 0 # Resets the count for each bigram.
 
         for comparing_bigram in bigram_list:
             if bigram == comparing_bigram:
-                bigram_count += 1
+                bigram_count += 1 # Counts all the matching bigrams from the list.
 
         bigram_frequencies_dictionary[bigram] = bigram_count
 
     sorted_bigram_frequencies = dict(sorted(bigram_frequencies_dictionary.items(), key=lambda item: item[1], reverse=True))
-
+    # Sorts the the
     return sorted_bigram_frequencies
 
-def print_top_5_most_frequent_bigrams(bigram_frequencies): # Prints out the top ten most frequent words.
-    top_5_count = 0 # Once this count reaches 10, this function stops printing.
+def print_top_5_most_frequent_bigrams(bigram_frequencies): # Prints out the top 5 most frequent bigrams.
+    top_5_count = 0 # Once this count reaches 5, this function stops printing.
 
     for item in bigram_frequencies.items(): # Goes through each element in the frequencies' library.
         if top_5_count < 5:
-            bigram, frequency = item # Separates the word (key) and frequency number (value) as two different variables.
+            bigram, frequency = item # Separates the bigram (key) and frequency number (value) as two different variables.
             print(f"{bigram[0] + " " + bigram[1]} -> {frequency}") # Prints out the result.
             top_5_count += 1
 
