@@ -6,12 +6,14 @@ import csv
 
 
 def convert_csv_as_dataframe(student_file):
+    # Converts the student csv as a dataframe.
     student_dataframe = pd.read_csv(student_file)
 
     return student_dataframe
 
 
 def filter_high_engagement_students(student_dataframe):
+    # Traverses through the data frame, and filters out the high engaging students.
     high_engagement_list = []
 
     for row in student_dataframe.itertuples():
@@ -22,6 +24,7 @@ def filter_high_engagement_students(student_dataframe):
 
 
 def create_high_engagement_csv(high_engagement_list):
+    # Creates a csv with only the high engagement students.
     with open("high_engagement.csv", "w", newline = "") as high_engagement_file:
         high_engagement_writer = csv.writer(high_engagement_file)
         high_engagement_writer.writerow(["Student index", "Grade", "Absences", "Study time", "Internet", "Activities"])
@@ -30,6 +33,7 @@ def create_high_engagement_csv(high_engagement_list):
 
 
 def calculate_high_engagement_average_grade(high_engagement_list):
+    # Calculates the total average for all the high engagement students.
     summation_of_grades = 0
     for student_info in high_engagement_list:
         summation_of_grades += student_info[1]
@@ -40,9 +44,11 @@ def calculate_high_engagement_average_grade(high_engagement_list):
 
 
 def print_information_of_high_engagement_students(high_engagement_list, average_grade):
+    # Prints out the number of high engagement students and average grade between all of them.
     print("Number of high engagement students:", len(high_engagement_list))
     print(f"Average grade of the high engagement students: {average_grade}%")
 
+# ============================================================================
 
 def main():
     with open("student.csv","r") as student_information_file:
