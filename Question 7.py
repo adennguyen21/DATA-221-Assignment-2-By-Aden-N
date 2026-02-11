@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 def load_soup(data_url):
     # Scraps the wiki website and put the data into one big "soup".
-    headers = {"User-Agent": "Mozilla/5.0"}
+    headers = {"User-Agent": "Mozilla/5.0"} # Wiki needs a user agent to scrap.
     wiki_contents = requests.get(data_url, headers=headers)
     return BeautifulSoup(wiki_contents.text, "html.parser")
 
