@@ -1,8 +1,8 @@
 # Question 3 - Identifying nearly identical lines.
 #======================================================================
 
-
-def open_and_read_file(file_name): # Opens and reads the file, returning the contents as a list.
+def open_and_read_file(file_name):
+    # Opens and reads the file, returning the contents as a list.
     line_list = []
 
     with open(file_name, "r") as line_file:
@@ -14,7 +14,8 @@ def open_and_read_file(file_name): # Opens and reads the file, returning the con
     return line_list
 
 
-def clean_lines(line): # Cleans the line so that it's lowercase and there is no whitespaces or punctuation.
+def clean_lines(line):
+    # Cleans the line so that it's lowercase and there is no whitespaces or punctuation.
     clean_line = ""
     for letter in line:
         if letter.isalnum():  # Keep only letters and numbers
@@ -61,6 +62,7 @@ def print_duplicate_sets(near_duplicate_sets):
             print(f"line {line_number}: {line}")
         print()
 
+# ====================================================================================
 
 def main():
     text_file = "sample-file.txt"
