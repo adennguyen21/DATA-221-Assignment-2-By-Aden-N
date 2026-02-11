@@ -6,24 +6,26 @@ def open_and_read_file(file_name): # Opens and reads the file, returning the con
     line_list = []
 
     with open(file_name, "r") as line_file:
-        for line_number, line in enumerate(line_file, start=1):
+        for line_number, line in enumerate(line_file, start=1): # Puts a index for each line.
             stripped_line = line.strip()
-            if stripped_line != "":
+            if stripped_line != "": # Filters any empty lines.
                 line_list.append((line_number, stripped_line))
 
     return line_list
 
 
-def clean_lines(line):
+def clean_lines(line): # Cleans the line so that it's lowercase and there is no whitespaces or punctuation.
     clean_line = ""
     for letter in line:
-        if letter.isalnum():  # keep only letters and numbers
-            clean_line += letter.lower()
+        if letter.isalnum():  # Keep only letters and numbers
+            clean_line += letter.lower() # Lowercase
 
     return clean_line
 
 
 def group_near_duplicates(line_list):
+    # Puts the clean line as a key with its values as the line number and original line.
+    # Also groups together near duplicate lines in a list.
     near_duplicates_dictionary= {}
 
     for line_number, line in line_list:
@@ -38,16 +40,18 @@ def group_near_duplicates(line_list):
 
 
 def find_duplicate_lines(near_duplicates_dictionary):
+    # Finds the groups that have two or more lines that are duplicates of each other.
     near_duplicate_lines = []
 
     for group in near_duplicates_dictionary.values():
         if len(group) > 1:
             near_duplicate_lines.append(group)
 
-    return near_duplicate_lines
+    return near_duplicate_lines # Final list with all the duplicate sets.
 
 
 def print_duplicate_sets(near_duplicate_sets):
+    # Prints out number of near-duplicate sets, and the first two duplicating sets.
     print(f"Number of near-duplicate sets: {len(near_duplicate_sets)}")
     print()
 
