@@ -12,7 +12,7 @@ def split_file_into_tokens(file_list): # Splits the contents of the file into in
 
     for line in file_list:
         for letter in line:
-            if letter in [" ", "\n", ".", ",", "!", "?"]: # Stops connecting letters when it detects whitespace, "/n", or punctuation. (This forms the individual words)
+            if letter in [" ", "\n", ".", ",", "!", "?", ":"]: # Stops connecting letters when it detects whitespace, "/n", or punctuation. (This forms the individual words)
                 word_list.append(unfinished_word) # Appends the word to word_list.
                 unfinished_word = " "
             else:
