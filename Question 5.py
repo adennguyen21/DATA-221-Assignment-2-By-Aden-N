@@ -4,6 +4,7 @@
 import csv
 
 def open_csv_as_list(student_csv_file):
+    # Opens the student csv and puts the data into a list.
     with open(student_csv_file, "r") as student_information_file:
 
         student_csv_reader = csv.reader(student_information_file)
@@ -16,8 +17,8 @@ def open_csv_as_list(student_csv_file):
 
 
 def create_new_column_grade_band(student_list):
+    # Filters students by their grade, and creates a new column based on grade bands.
     grade_band_dictionary = {"Low": [], "Medium": [], "High": []}
-
 
     for student in student_list:
 
@@ -32,6 +33,7 @@ def create_new_column_grade_band(student_list):
 
 
 def number_of_students_each_band(grade_band_dictionary):
+    # Calculates the number of students in each grade band
     student_count_dictionary = {}
     low_list = grade_band_dictionary["Low"]
     medium_list = grade_band_dictionary["Medium"]
@@ -45,6 +47,7 @@ def number_of_students_each_band(grade_band_dictionary):
 
 
 def calculate_average_absences_each_band(grade_band_dictionary):
+    # Calculates the averages of absences for each grade band.
     absences_dictionary = {}
     low_list = grade_band_dictionary["Low"]
     medium_list = grade_band_dictionary["Medium"]
@@ -76,6 +79,7 @@ def calculate_average_absences_each_band(grade_band_dictionary):
 
 
 def calculate_percentage_internet_access_each_band(grade_band_dictionary):
+    # Calculates the percentage of internet access for each band.
     low_list = grade_band_dictionary["Low"]
     medium_list = grade_band_dictionary["Medium"]
     high_list = grade_band_dictionary["High"]
@@ -110,6 +114,7 @@ def calculate_percentage_internet_access_each_band(grade_band_dictionary):
 
 
 def combine_all_into_list(student_counts, absence_averages, internet_access_percentages):
+    # Combines all the data from each grade band, and puts it in a list for creating a csv later.
     finished_grade_band_list = []
 
     final_low_list = ["Low", student_counts["Low"], absence_averages["Low"], internet_access_percentages["Low"]]
@@ -124,6 +129,7 @@ def combine_all_into_list(student_counts, absence_averages, internet_access_perc
 
 
 def create_student_bands_csv(final_grade_band_list):
+    # Creates the student band csv using the list of all the grade band data.
     with open("student_bands.csv", "w", newline="") as student_bands_file:
         student_bands_writer = csv.writer(student_bands_file)
         student_bands_writer.writerow(["grade_band", "number_of_students", "average_absences", "percentage_with_internet"])
@@ -131,6 +137,7 @@ def create_student_bands_csv(final_grade_band_list):
     student_bands_file.close()
 
 #======================================================================
+
 def main():
     student_information_file = open_csv_as_list("student.csv")
 
