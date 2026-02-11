@@ -1,10 +1,12 @@
 # Question 9 - Extract tabular data from a webpage and store it in a structured format.
-# (not currently outputting the right result.)
+
+# ***(currently not outputting the right result.)***
 #=======================================================================================
 
 from bs4  import BeautifulSoup
 import requests
 import csv
+
 
 def load_soup(data_url):
     # Scraps the wiki website and puts the data into a "soup".
@@ -17,7 +19,7 @@ def load_soup(data_url):
 def extract_table(soup):
     # Finds the first table that has more than three rows.
     wiki_content = soup.find("div", id="mw-content-text")
-    tables = wiki_content.find_all("table", class_="wikitable")
+    tables = wiki_content.find_all("table")
 
     for table in tables:
         rows = table.find_all("tr")
